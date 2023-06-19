@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Rapid-Reader</title>
+    <link rel="stylesheet" href="styles.css">
+    <meta name="viewport" content="width=device-width">
+  </head>
+  <body>
+    <header>
+      <h1>Rapid-Reader</h1>
+    </header>
+
+<!-- TODO: create a large and rectangular paste box for text
+<!-- TODO: create a similar box for output as well
+<!-- TODO: theme the page in simpler colors
+<!-- TODO: change font too -->
+
+    <main>
+      <div id="ipt">
+      <form onsubmit="event.preventDefault(); processInput();">
+        <input type="text" id="input" placeholder="Input" required>
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+
+        <div id="output"></div>
+
+      <script src="script.js"></script>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,172 @@
+  *{
+    font-family: Arial,Segoe UI Symbol,Noto Color Emoji;
+  }
+
+  body {
+    font-family: Arial, sans-serif;
+    background: #1a1d23;
+    background: -webkit-linear-gradient(to left, #A7BFE8, #6190E8); 
+    background: linear-gradient(to left, #A7BFE8, #6190E8);
+  }
+  
+  header {
+    color: #1b0a10;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  #ipt {
+    position: relative;
+  }
+  
+  input {
+    position:relative;
+    left: 150px;
+    width: 150px;
+    height: 40px;
+    box-sizing: border-box;
+    border: 2px solid #322e2e;
+    border-radius: 18px;
+    font-size: 17px;
+    background-color: white;
+    background-position: 5px 5px; 
+    background-repeat: no-repeat;
+    padding: 4px 5px 4px 5px;
+    transition: width 0.4s ease-in-out;
+  }
+
+  input[type=text]:focus {
+    width: 70%;
+  }
+
+  input:hover {
+    width: 70%;
+}
+
+  button {
+    position: relative;
+    left: 150px;
+    background-color: #add19b;
+    color: #090202;
+    font-size: 16px;
+    padding: 6px;
+    border-radius: 16px;
+    cursor: pointer;
+    text-align: center;
+  }
+  
+  #output {
+    font-size: 20px;
+    line-height: 1.5em;
+    margin-top: 20px;
+    position: relative;
+    left: 150px;
+    padding: 10px;
+    width: 72%;
+  }
+
+
+  
+  
+  
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+  /* body {
+    height: auto;
+    width: auto;
+    background-color: #b8c6db;
+  }
+
+  h2{
+    text-align: center;
+    color: rgb(6, 7, 8);
+    position: relative;
+    left: 280px;
+    top: 20px;
+  }
+
+  header h1 {
+    color: rgb(14, 9, 9);
+    font-size: 1.75em;
+    font-weight: bold;
+    text-align: left;
+    padding: 2px;
+    position: relative;
+    left: 5%;
+    top: 3%;
+  }
+  
+  p {
+    color: rgb(6, 7, 8);
+    margin-bottom: 1em;
+    text-align: left;
+    font-size: medium;
+    font-weight: normal;
+  }
+
+  ::placeholder {
+    color:rgb(120, 117, 141);
+    position: relative;
+    text-align: left;
+    font-size: 3em;
+  }
+
+  input {
+    position: relative;
+    top: 2em;
+    left: 5%;
+    padding: 20px;
+    width: 480px;
+    height: 450px;
+    box-sizing: border-box;
+    border: 1px solid #322e2e;
+    border-radius: 18px;
+    font-size: 17px;
+    background-color: white;
+  }
+
+  button {
+    position: relative;
+    top: 16em;
+    right: 0.5em;
+    background-color: #add19b;
+    color: #090202;
+    font-size: 18px;
+    padding: 6px;
+    border-radius: 10px;
+    cursor: pointer;
+    text-align: center;
+  }
+
+  #output {
+    position: relative;
+    left: 65%;
+    bottom: 24em;
+    text-align: right;
+    padding: 20px;
+    width: 480px;
+    height: 450px;
+    box-sizing: border-box;
+    border: 1px solid #322e2e;
+    border-radius: 18px;
+    font-size: 17px;
+    background-color: white;
+  }
+
+  label{
+    color: whitesmoke;
+    font-style: normal;
+  } */
