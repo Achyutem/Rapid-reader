@@ -6,6 +6,16 @@ const processBtn = document.getElementById("process-btn");
 const clearBtn = document.getElementById("clear-btn");
 const fontSizeInput = document.getElementById("font-size");
 const sizeValue = document.getElementById("size-value");
+const copyBtn = document.getElementById("copy-btn");
+
+const sampleText = `If you can keep your head when all about you
+Are losing theirs and blaming it on you,
+If you can trust yourself when all men doubt you,
+But make allowance for their doubting too;
+If you can wait and not be tired by waiting,
+Or being lied about, don’t deal in lies,
+Or being hated, don’t give way to hating,
+And yet don’t look too good, nor talk too wise:`;
 
 themeToggle.addEventListener("click", () => {
   document.body.classList.toggle("dark-theme");
@@ -29,17 +39,12 @@ function processInput() {
     outputElement.innerHTML = "";
     return;
   }
-
-  // Remove any existing bold tags
   input = input.replace(/<\/?b>/g, "");
-
-  // Process text while preserving line breaks
   const lines = input.split("\n");
   const processedLines = lines.map((line) => {
     if (line.trim() === "") return "";
     return processLine(line);
   });
-
   outputElement.innerHTML = processedLines.join("<br>");
   updateFontSize();
 }
@@ -47,17 +52,13 @@ function processInput() {
 function processLine(line) {
   let words = line.split(/(\s+)/);
   let result = "";
-
   for (let i = 0; i < words.length; i++) {
     let word = words[i];
-
-    // Skip spaces and preserve them
     if (word.trim() === "") {
       result += word;
       continue;
     }
 
-    // Apply bolding based on word length
     if (word.length <= 3) {
       result += "<b>" + word + "</b>";
     } else if (word.length === 4) {
@@ -68,10 +69,10 @@ function processLine(line) {
       result += "<b>" + word.substr(0, 4) + "</b>" + word.substr(4);
     }
   }
-
   return result;
 }
 
+// Update font size
 function updateFontSize() {
   const fontSize = fontSizeInput.value;
   outputElement.style.fontSize = `${fontSize}px`;
@@ -89,6 +90,21 @@ function loadFontPreferences() {
   }
 }
 
+copyBtn.addEventListener("click", () => {
+  const outputText = outputElement.innerText;
+  navigator.clipboard
+    .writeText(outputText)
+    .then(() => {
+      copyBtn.textContent = "Copied!";
+      setTimeout(() => {
+        copyBtn.textContent = "Copy Text";
+      }, 2000);
+    })
+    .catch((err) => {
+      console.error("Failed to copy text: ", err);
+    });
+});
+
 processBtn.addEventListener("click", processInput);
 clearBtn.addEventListener("click", () => {
   inputElement.value = "";
@@ -98,7 +114,8 @@ fontSizeInput.addEventListener("input", updateFontSize);
 
 window.addEventListener("DOMContentLoaded", () => {
   loadFontPreferences();
-  if (inputElement.value.trim()) {
+  if (!inputElement.value.trim()) {
+    inputElement.value = sampleText;
     processInput();
   }
 });

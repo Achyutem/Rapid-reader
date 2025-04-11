@@ -236,3 +236,81 @@ input[type="range"] {
     width: 95%;
   }
 }
+
+#output-container {
+  position: relative; /* Allows absolute positioning of the button inside */
+  min-height: 200px;
+  padding-top: 40px; /* Adds space for the button to avoid overlap with label/output */
+}
+
+#copy-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background-color: var(--button-color);
+  color: var(--button-text);
+  border: none;
+  border-radius: 8px;
+  padding: 8px 12px; /* Slightly smaller for top-right placement */
+  cursor: pointer;
+  font-size: 14px; /* Smaller font to fit neatly */
+  transition: all 0.2s ease;
+}
+
+#copy-btn:hover {
+  opacity: 0.9;
+}
+
+#copy-btn.copied {
+  background-color: var(--primary-color);
+}
+
+#copy-btn .copy-icon {
+  width: 14px; /* Smaller icon for compact button */
+  height: 14px;
+  transition: all 0.2s ease;
+}
+
+#copy-btn.copied .copy-icon {
+  stroke: var(--button-text);
+  transform: scale(1.1);
+}
+
+@media (max-width: 768px) {
+  #output-container {
+    padding-top: 35px; /* Adjust for smaller screens */
+  }
+
+  #copy-btn {
+    top: 8px;
+    right: 8px;
+    padding: 6px 10px;
+    font-size: 13px;
+  }
+
+  #copy-btn .copy-icon {
+    width: 12px;
+    height: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  #output-container {
+    padding-top: 30px;
+  }
+
+  #copy-btn {
+    top: 6px;
+    right: 6px;
+    padding: 5px 8px;
+    font-size: 12px;
+  }
+
+  #copy-btn .copy-icon {
+    width: 10px;
+    height: 10px;
+  }
+}
