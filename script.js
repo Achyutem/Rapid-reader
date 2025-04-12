@@ -8,6 +8,18 @@ const fontSizeInput = document.getElementById("font-size");
 const sizeValue = document.getElementById("size-value");
 const copyBtn = document.getElementById("copy-btn");
 
+function getQueryParam(param) {
+  const urlParams = new URLSearchParams(window.location.search);
+  return urlParams.get(param);
+}
+
+const referralSource = getQueryParam("ref");
+if (referralSource) {
+  gtag("event", "custom_referral", {
+    referral_source: referralSource,
+  });
+}
+
 const sampleText = `If you can keep your head when all about you
 Are losing theirs and blaming it on you,
 If you can trust yourself when all men doubt you,
