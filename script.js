@@ -102,19 +102,46 @@ function loadFontPreferences() {
   }
 }
 
-copyBtn.addEventListener("click", () => {
-  const outputText = outputElement.innerText;
-  navigator.clipboard
-    .writeText(outputText)
-    .then(() => {
+copyBtn.addEventListener("click", async () => {
+  const htmlContent = outputElement.innerHTML;
+  const plainTextContent = outputElement.innerText;
+
+  if (navigator.clipboard && window.ClipboardItem) {
+    try {
+      const blobHtml = new Blob([htmlContent], { type: "text/html" });
+      const blobText = new Blob([plainTextContent], { type: "text/plain" });
+
+      const clipboardItem = new ClipboardItem({
+        "text/html": blobHtml,
+        "text/plain": blobText,
+      });
+
+      await navigator.clipboard.write([clipboardItem]);
+
       copyBtn.textContent = "Copied!";
       setTimeout(() => {
         copyBtn.textContent = "Copy Text";
       }, 2000);
-    })
-    .catch((err) => {
-      console.error("Failed to copy text: ", err);
-    });
+    } catch (err) {
+      console.error("Clipboard write failed:", err);
+      fallbackCopy();
+    }
+  } else {
+    fallbackCopy();
+  }
+
+  function fallbackCopy() {
+    const temp = document.createElement("textarea");
+    temp.value = plainTextContent;
+    document.body.appendChild(temp);
+    temp.select();
+    document.execCommand("copy");
+    document.body.removeChild(temp);
+    copyBtn.textContent = "Copied (Fallback)";
+    setTimeout(() => {
+      copyBtn.textContent = "Copy Text";
+    }, 2000);
+  }
 });
 
 processBtn.addEventListener("click", processInput);
