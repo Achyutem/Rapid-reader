@@ -70,18 +70,31 @@ function processLine(line) {
       result += word;
       continue;
     }
-
-    if (word.length <= 3) {
-      result += "<b>" + word + "</b>";
-    } else if (word.length === 4) {
-      result += "<b>" + word.substr(0, 2) + "</b>" + word.substr(2);
-    } else if (word.length >= 5 && word.length <= 6) {
-      result += "<b>" + word.substr(0, 3) + "</b>" + word.substr(3);
-    } else {
-      result += "<b>" + word.substr(0, 4) + "</b>" + word.substr(4);
-    }
+    result += applyBionicReading(word);
   }
   return result;
+}
+
+function applyBionicReading(word) {
+  const cleanWord = word.replace(/[^a-zA-Z0-9']/g, "");
+  const len = cleanWord.length;
+
+  if (len === 0) return word;
+
+  let boldLength;
+  if (len <= 2) {
+    boldLength = 1;
+  } else if (len <= 4) {
+    boldLength = Math.ceil(len * 0.5);
+  } else if (len <= 7) {
+    boldLength = Math.ceil(len * 0.45);
+  } else {
+    boldLength = Math.ceil(len * 0.4);
+  }
+
+  const boldPart = word.substr(0, boldLength);
+  const restPart = word.substr(boldLength);
+  return `<b>${boldPart}</b>${restPart}`;
 }
 
 // Update font size
