@@ -29,6 +29,10 @@ Or being lied about, don’t deal in lies,
 Or being hated, don’t give way to hating,
 And yet don’t look too good, nor talk too wise:`;
 
+document.getElementById("extension").addEventListener("click", function () {
+  window.open("https://github.com/achyutem/radid-reader-extension", "_blank");
+});
+
 themeToggle.addEventListener("click", () => {
   document.body.classList.toggle("dark-theme");
   if (document.body.classList.contains("dark-theme")) {
